@@ -1,12 +1,13 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { useState } from 'react'
+import { TextInput } from 'react-native'
 
 const Input = () => {
     
   const [text, setText] = useState("");
   return (
-    <TextInput >
+    <TextInput
         placeholder="Type something"
         autoCorrect={true} 
         keyboardType="default"
@@ -15,7 +16,7 @@ const Input = () => {
         onChangeText={function (changedText) {
           setText(changedText);
         }}
-      </TextInput>
+       />
   )
 }
 
