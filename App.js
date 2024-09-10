@@ -15,7 +15,11 @@ export default function App() {
         keyboardType="default"
         value={text}
         style={{borderBottomColor: "purple", borderBottomWidth:2}}
+        onChangeText={function (changedText) {
+          setText(changedText);
+        }}
       </TextInput>
+      <Text>{text}</Text>
     </View>
   );
 }
