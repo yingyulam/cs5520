@@ -6,6 +6,9 @@ import { TextInput } from 'react-native'
 const Input = ( {isFocused} ) => {
     
   const [text, setText] = useState("");
+  const [status, setStatus] = useState("");
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
   return (
     <View>
       <TextInput
@@ -17,13 +20,26 @@ const Input = ( {isFocused} ) => {
           style={{borderBottomColor: "purple", borderBottomWidth:2}}
           onChangeText={function (changedText) {
             setText(changedText);
+            setIsSubmitted(false)
+          }}
+          onBlur={()=>{
+            setStatus(text.length >= 3 ? 
+              "Thank you"
+              :
+              "Please type more than 3 characters"
+            )
+            setIsSubmitted(true)
           }}
         />
-        {text.length > 0? (
-        <Text>{text.length}</Text>) : <Text />}
+        {text.length > 0 && !isSubmitted ? (
+          <Text>{text.length}</Text>) : <Text></Text>}
+        {status.length > 0? (
+          <Text>{status}</Text>) : <Text></Text>}
+        
     </View>
   )
 }
+
 
 export default Input
 
