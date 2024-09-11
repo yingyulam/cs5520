@@ -7,17 +7,21 @@ const Input = ( {isFocused} ) => {
     
   const [text, setText] = useState("");
   return (
-    <TextInput
-        placeholder="Type something"
-        autoCorrect={true}
-        autoFocus={isFocused}
-        keyboardType="default"
-        value={text}
-        style={{borderBottomColor: "purple", borderBottomWidth:2}}
-        onChangeText={function (changedText) {
-          setText(changedText);
-        }}
-       />
+    <View>
+      <TextInput
+          placeholder="Type something"
+          autoCorrect={true}
+          autoFocus={isFocused}
+          keyboardType="default"
+          value={text}
+          style={{borderBottomColor: "purple", borderBottomWidth:2}}
+          onChangeText={function (changedText) {
+            setText(changedText);
+          }}
+        />
+        {text.length > 0? (
+        <Text>{text.length}</Text>) : <Text />}
+    </View>
   )
 }
 
