@@ -3,13 +3,14 @@ import React from 'react'
 import { useState } from 'react'
 import { TextInput } from 'react-native'
 
-const Input = () => {
+const Input = ( {isFocused} ) => {
     
   const [text, setText] = useState("");
   return (
     <TextInput
         placeholder="Type something"
-        autoCorrect={true} 
+        autoCorrect={true}
+        autoFocus={isFocused}
         keyboardType="default"
         value={text}
         style={{borderBottomColor: "purple", borderBottomWidth:2}}
