@@ -3,22 +3,44 @@ import React from 'react'
 import { useState } from 'react'
 import { TextInput } from 'react-native'
 
-const Input = () => {
+const Input = ( {isFocused} ) => {
     
   const [text, setText] = useState("");
+  const [status, setStatus] = useState("");
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
   return (
-    <TextInput
-        placeholder="Type something"
-        autoCorrect={true} 
-        keyboardType="default"
-        value={text}
-        style={{borderBottomColor: "purple", borderBottomWidth:2}}
-        onChangeText={function (changedText) {
-          setText(changedText);
-        }}
-       />
+    <View>
+      <TextInput
+          placeholder="Type something"
+          autoCorrect={true}
+          autoFocus={isFocused}
+          keyboardType="default"
+          value={text}
+          style={{borderBottomColor: "purple", borderBottomWidth:2}}
+          onChangeText={function (changedText) {
+            setText(changedText);
+            setStatus("");
+            setIsSubmitted(false);
+          }}
+          onBlur={()=>{
+            setStatus(text.length >= 3 ? 
+              "Thank you"
+              :
+              "Please type more than 3 characters"
+            )
+            setIsSubmitted(true)
+          }}
+        />
+        {text.length > 0 && !isSubmitted ? (
+          <Text>{text.length}</Text>) : <Text></Text>}
+        {status.length > 0? (
+          <Text>{status}</Text>) : <Text></Text>}
+        
+    </View>
   )
 }
+
 
 export default Input
 
