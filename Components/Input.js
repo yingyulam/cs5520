@@ -20,7 +20,8 @@ const Input = ( {isFocused} ) => {
           style={{borderBottomColor: "purple", borderBottomWidth:2}}
           onChangeText={function (changedText) {
             setText(changedText);
-            setIsSubmitted(false)
+            setStatus("");
+            setIsSubmitted(false);
           }}
           onBlur={()=>{
             setStatus(text.length >= 3 ? 
