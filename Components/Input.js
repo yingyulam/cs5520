@@ -3,7 +3,7 @@ import React from 'react'
 import { useState } from 'react'
 import { TextInput, Button } from 'react-native'
 
-const Input = ( {isFocused} ) => {
+const Input = ( {isFocused, handleInputData} ) => {
     
   const [text, setText] = useState("");
   const [status, setStatus] = useState("");
@@ -11,6 +11,7 @@ const Input = ( {isFocused} ) => {
 
   const handleConfirm = () => {
     console.log(text)
+    handleInputData(text)
   }
 
   return (
