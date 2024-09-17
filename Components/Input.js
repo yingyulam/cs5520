@@ -1,13 +1,17 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { useState } from 'react'
-import { TextInput } from 'react-native'
+import { TextInput, Button } from 'react-native'
 
 const Input = ( {isFocused} ) => {
     
   const [text, setText] = useState("");
   const [status, setStatus] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleConfirm = () => {
+    console.log(text)
+  }
 
   return (
     <View>
@@ -36,7 +40,11 @@ const Input = ( {isFocused} ) => {
           <Text>{text.length}</Text>) : <Text></Text>}
         {status.length > 0? (
           <Text>{status}</Text>) : <Text></Text>}
-        
+
+      <Button
+        title="Confirm"
+        onPress={handleConfirm}
+        />
     </View>
   )
 }
