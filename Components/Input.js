@@ -18,13 +18,13 @@ const Input = ( {isFocused, handleInputData, isModalVisible, setIsModalVisible} 
   return (
     <Modal animationType="slide" visible={isModalVisible}>
       <View style={styles.container}>
-        <TextInput
+        <TextInput style={styles.input}
             placeholder="Type something"
             autoCorrect={true}
             autoFocus={isFocused}
             keyboardType="default"
             value={text}
-            style={{borderBottomColor: "purple", borderBottomWidth:2}}
+            // style={{borderBottomColor: "purple", borderBottomWidth:2}}
             onChangeText={function (changedText) {
               setText(changedText);
               setStatus("");
@@ -40,14 +40,15 @@ const Input = ( {isFocused, handleInputData, isModalVisible, setIsModalVisible} 
             }}
           />
           {text.length > 0 && !isSubmitted ? (
-            <Text>{text.length}</Text>) : <Text></Text>}
+            <Text style={styles.feedback}>{text.length}</Text>) : <Text style={styles.feedback}></Text>}
           {status.length > 0? (
-            <Text>{status}</Text>) : <Text></Text>}
-
-        <Button
-          title="Confirm"
-          onPress={handleConfirm}
+            <Text style={styles.feedback}>{status}</Text>) : <Text style={styles.feedback}></Text>}
+        <View style={styles.button}>
+          <Button
+            title="Confirm"
+            onPress={handleConfirm}
           />
+          </View>
       </View>
     </Modal>
   )
@@ -62,5 +63,21 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  input: {
+    borderWidth: 2,
+    borderColor: "#800080",
+    paddingVertical: 4,
+    padding: 4,
+    textAlign: 'center',
+    fontSize: 15,
+    color: "#007AFF"
+  },
+  feedback: {
+    fontSize: 15
+  },
+  button: {
+    width: '30%',
+    margin: 1,
   },
 })
