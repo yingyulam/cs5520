@@ -16,39 +16,41 @@ const Input = ( {isFocused, handleInputData, isModalVisible, setIsModalVisible} 
   }
 
   return (
-    <Modal animationType="slide" visible={isModalVisible}>
+    <Modal animationType="slide" visible={isModalVisible} transparent={true}>
       <View style={styles.container}>
-        <TextInput style={styles.input}
-            placeholder="Type something"
-            autoCorrect={true}
-            autoFocus={isFocused}
-            keyboardType="default"
-            value={text}
-            // style={{borderBottomColor: "purple", borderBottomWidth:2}}
-            onChangeText={function (changedText) {
-              setText(changedText);
-              setStatus("");
-              setIsSubmitted(false);
-            }}
-            onBlur={()=>{
-              setStatus(text.length >= 3 ? 
-                "Thank you"
-                :
-                "Please type more than 3 characters"
-              )
-              setIsSubmitted(true)
-            }}
-          />
-          {text.length > 0 && !isSubmitted ? (
-            <Text style={styles.feedback}>{text.length}</Text>) : <Text style={styles.feedback}></Text>}
-          {status.length > 0? (
-            <Text style={styles.feedback}>{status}</Text>) : <Text style={styles.feedback}></Text>}
-        <View style={styles.button}>
-          <Button
-            title="Confirm"
-            onPress={handleConfirm}
-          />
-          </View>
+        <View style={styles.popup}>
+          <TextInput style={styles.input}
+              placeholder="Type something"
+              autoCorrect={true}
+              autoFocus={isFocused}
+              keyboardType="default"
+              value={text}
+              // style={{borderBottomColor: "purple", borderBottomWidth:2}}
+              onChangeText={function (changedText) {
+                setText(changedText);
+                setStatus("");
+                setIsSubmitted(false);
+              }}
+              onBlur={()=>{
+                setStatus(text.length >= 3 ? 
+                  "Thank you"
+                  :
+                  "Please type more than 3 characters"
+                )
+                setIsSubmitted(true)
+              }}
+            />
+            {text.length > 0 && !isSubmitted ? (
+              <Text style={styles.feedback}>{text.length}</Text>) : <Text style={styles.feedback}></Text>}
+            {status.length > 0? (
+              <Text style={styles.feedback}>{status}</Text>) : <Text style={styles.feedback}></Text>}
+          <View style={styles.button}>
+            <Button
+              title="Confirm"
+              onPress={handleConfirm}
+            />
+            </View>
+        </View>
       </View>
     </Modal>
   )
@@ -60,7 +62,7 @@ export default Input
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    // backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -74,10 +76,18 @@ const styles = StyleSheet.create({
     color: "#007AFF"
   },
   feedback: {
-    fontSize: 15
+    fontSize: 15,
+    textAlign: "center",
+    padding: 1
   },
   button: {
     width: '30%',
-    margin: 1,
+    margin: 1, 
+    alignItems: 'center'
   },
+  popup: {
+    padding: 40,
+    borderRadius: 15,
+    backgroundColor: "#d3d3d3"
+  }
 })
