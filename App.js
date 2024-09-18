@@ -33,9 +33,11 @@ export default function App() {
 
       <Input isFocused={true} handleInputData={handleInputData} isModalVisible={isModalVisible} setIsModalVisible={setIsModalVisible}/>
 
-      {/* <View style={styles.dataContainer}> */}
-        <Text style={styles.receivedData}>{receivedData}</Text>
-      {/* </View> */}
+      <View style={styles.bottomSection}>
+        <View style={styles.textContainer}>
+          <Text style={styles.text}>{receivedData}</Text>
+        </View>
+      </View>
     </SafeAreaView>
   );
 }
@@ -54,23 +56,24 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center"
   },
-  receivedData: {
+  bottomSection: {
     flex: 4,
     width: "100%",
-    alignItems: "center",
-    textAlign: 'center',
-    fontSize: 20,
-    color: "#800000",
     backgroundColor: "#e6e6fa",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "flex-start"
   },
-  // dataContainer: {
-  //   flex: 4,
-  //   backgroundColor: "#e6e6fa",
-  //   alignItems: "center",
-  //   justifyContent: "center"
-  // },
+  textContainer: {
+    alignItems:"center",
+    marginTop: 10,
+    padding: 3,
+    borderRadius: 3,
+    backgroundColor: "#c0c0c0",
+  },
+  text: {
+    fontSize: 20,
+    color: "#800000",
+  },
   button: {
     width: '30%',
     margin: 12,
